@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer base {
+  
+  :root {
+    --background: #ffffff; 
+    --foreground: #09090b; 
+    --muted: #f4f4f5; 
+    --muted-foreground: #71717a;     
+    --border: #e4e4e7; 
+    --primary: #2563eb; 
+    --secondary: #f59e0b; 
+    --danger: #ef4444; 
+    --success: #16a34a; 
+    --warning: #eab308; 
+    --card: #ffffff;
+    --card-foreground: #09090b;
+  }
+
+ 
+  .dark {
+    --background: #111827; 
+    --foreground: #f9fafb; 
+    --muted: #1f2937; 
+    --muted-foreground: #9ca3af; 
+    --border: #374151; 
+    --primary: #3b82f6; 
+    --secondary: #fbbf24; 
+    --danger: #f87171; 
+    --success: #22c55e; 
+    --warning: #facc15; 
+    --card: #1f2937; 
+    --card-foreground: #f9fafb;
+
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply transition-colors duration-300;
+  }
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+}
+
+}
+
+@custom-variant dark (&:is(.dark *));
