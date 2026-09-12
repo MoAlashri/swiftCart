@@ -1,12 +1,21 @@
 import Hero from '../components/home/Hero';
 import FeaturedCategories from '../components/home/FeaturedCategories';
+import PromoBanner from '../components/home/PromoBanner';
+import FeaturedProducts from '../components/home/FeaturedProducts';
+import Testimonials from  '../components/home/Testimonials';
+import Newsletter from  '../components/home/Newsletter';
 
-export default function Home() {
+function Home() {
   return (
-    <div className="flex flex-col gap-8 md:gap-16 pb-16">
+    <div>
       <Hero />
       <FeaturedCategories />
-      {/* السيكشن الجاي هيكون الـ Trending Products */}
+      <PromoBanner />
+      <FeaturedProducts />
+      <Testimonials />
+      <Newsletter />
     </div>
   );
 }
+
+export default Home;
