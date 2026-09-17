@@ -5,9 +5,9 @@ function NavItem({ to, children }) {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `relative py-1 text-sm font-medium transition-colors hover:text-primary after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 ${
+        `relative py-1 text-sm font-medium transition-colors hover:text-accent after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:bg-accent after:transition-all after:duration-300 ${
           isActive
-            ? 'text-primary after:w-full'
+            ? 'text-accent after:w-full'
             : 'text-muted-foreground after:w-0 hover:after:w-full'
         }`
       }
@@ -16,5 +16,4 @@ function NavItem({ to, children }) {
     </NavLink>
   );
 }
-
 export default NavItem;

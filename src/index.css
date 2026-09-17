@@ -1,38 +1,47 @@
 @import "tailwindcss";
-
 @custom-variant dark (&:is(.dark *));
 
 
 
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #09090b;
-    --muted: #f4f4f5;
-    --muted-foreground: #71717a;
-    --border: #e4e4e7;
-    --primary: #2563eb;
-    --secondary: #f59e0b;
-    --danger: #ef4444;
-    --success: #16a34a;
-    --warning: #eab308;
+    --background: #f1f1f1;
+    --foreground: #1a1a1a;
+    --muted: #f0f0f0;
+    --muted-foreground: #6d7175;
+    --border: #e3e3e3;
+    --primary: #1a1a1a;          /* أزرار primary سودا زي Shopify الحديث */
+    --primary-foreground: #ffffff;
+    --accent: #2c6ecb;            /* لينكات وحالات interactive */
+    --secondary: #f1f1f1;
+    --secondary-foreground: #1a1a1a;
+    --danger: #d82c0d;
+    --success: #008060;           /* الأخضر ده بس في حالات success */
+    --warning: #b98900;
     --card: #ffffff;
-    --card-foreground: #09090b;
+    --card-foreground: #1a1a1a;
   }
 
   .dark {
-    --background: #111827;
-    --foreground: #f9fafb;
-    --muted: #1f2937;
-    --muted-foreground: #9ca3af;
-    --border: #374151;
-    --primary: #3b82f6;
-    --secondary: #fbbf24;
-    --danger: #f87171;
-    --success: #22c55e;
-    --warning: #facc15;
-    --card: #1f2937;
-    --card-foreground: #f9fafb;
+    --background: #121212;
+    --foreground: #f6f6f7;
+    --muted: #1e1e1e;
+    --muted-foreground: #9a9ea3;
+    --border: #2c2c2c;
+    --primary: #f6f6f7;
+    --primary-foreground: #1a1a1a;
+    --accent: #5c9eff;
+    --secondary: #1e1e1e;
+    --secondary-foreground: #f6f6f7;
+    --danger: #fd6151;
+    --success: #00a67e;
+    --warning: #e0b93a;
+    --card: #1a1a1a;
+    --card-foreground: #f6f6f7;
   }
 
   body {
@@ -49,13 +58,17 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
   --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
   --color-danger: var(--danger);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
-  --font-display: "Fraunces", serif;
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Inter", -apple-system, sans-serif;
+  --radius-card: 8px;
+  --radius-button: 6px;
 }

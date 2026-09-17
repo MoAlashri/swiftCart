@@ -5,8 +5,8 @@ import { SHOP_CATEGORIES } from './data';
 function ShopMegaMenu({ onNavigate }) {
   return (
     <div className="absolute left-1/2 top-full z-50 mt-3 w-105 -translate-x-1/2 animate-in fade-in slide-in-from-top-1 duration-200">
-      <div className="overflow-hidden rounded-lg border border-border bg-popover shadow-lg">
-        <div className="grid grid-cols-2 gap-1 p-3">
+        <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+          <div className="grid grid-cols-2 gap-1 p-3">
           {SHOP_CATEGORIES.map(({ name, path, icon: Icon }) => (
             <Link
               key={path}

@@ -13,11 +13,7 @@ import {
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 
-/* =========================================
-   Social brand icons — كإس في جي بسيطة بدل
-   ما نعتمد على lucide-react، لأن نسخ حديثة
-   منه شالت أيقونات البراندات دي
-   ========================================= */
+
 
 const InstagramIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
@@ -46,10 +42,7 @@ const YoutubeIcon = (props) => (
   </svg>
 );
 
-/* =========================================
-   Static data — منفصلة عن الكومبوننت عشان
-   لو زادت اللينكات منزحمش الكود
-   ========================================= */
+
 
 const FOOTER_COLUMNS = [
   {
@@ -108,7 +101,6 @@ export default function Footer() {
   const handleSubscribe = (e) => {
     e.preventDefault();
     if (!email.trim()) return;
-    // TODO: اربطها بالـ API الحقيقي بتاع النيوزليتر
     setStatus('submitted');
     setEmail('');
   };
@@ -119,12 +111,11 @@ export default function Footer() {
     <footer className="relative border-t border-border bg-background">
       <BackToTop onClick={scrollToTop} />
 
-      {/* شريط الثقة */}
       <div className="border-b border-border">
         <div className="container mx-auto grid grid-cols-2 gap-6 px-4 py-8 sm:grid-cols-4 sm:px-6 lg:px-8">
           {TRUST_BADGES.map(({ icon: Icon, label, sub }) => (
             <div key={label} className="flex items-start gap-3">
-              <Icon className="h-5 w-5 shrink-0 text-primary" />
+              <Icon className="h-5 w-5 shrink-0 text-accent" />
               <div>
                 <p className="text-sm font-medium text-foreground">{label}</p>
                 <p className="text-xs text-muted-foreground">{sub}</p>
@@ -134,7 +125,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* الجسم الرئيسي */}
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <BrandColumn />
@@ -152,7 +142,6 @@ export default function Footer() {
         />
       </div>
 
-      {/* الشريط السفلي */}
       <div className="border-t border-border">
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6 lg:px-8">
           <p className="text-xs text-muted-foreground">
@@ -164,7 +153,7 @@ export default function Footer() {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-xs text-muted-foreground transition-colors hover:text-primary"
+                className="text-xs text-muted-foreground transition-colors hover:text-accent"
               >
                 {link.name}
               </Link>
@@ -178,14 +167,11 @@ export default function Footer() {
   );
 }
 
-/* =========================================
-   Sub-components
-   ========================================= */
 
 const BrandColumn = () => (
   <div className="flex flex-col gap-4">
     <Link to="/" className="flex items-center gap-1">
-      <span className="text-xl font-bold tracking-tight text-primary">
+      <span className="text-xl font-semibold tracking-tight text-accent">
         Swift<span className="text-foreground">Cart</span>
       </span>
     </Link>
@@ -200,13 +186,13 @@ const BrandColumn = () => (
       </li>
       <li className="flex items-center gap-2.5 text-sm text-muted-foreground">
         <Phone className="h-4 w-4 shrink-0 text-muted-foreground" />
-        <a href="tel:+20100000000" className="transition-colors hover:text-primary">
+        <a href="tel:+20100000000" className="transition-colors hover:text-accent">
           +20 10 000 0000
         </a>
       </li>
       <li className="flex items-center gap-2.5 text-sm text-muted-foreground">
         <Mail className="h-4 w-4 shrink-0 text-muted-foreground" />
-        <a href="mailto:support@swiftcart.com" className="transition-colors hover:text-primary">
+        <a href="mailto:support@swiftcart.com" className="transition-colors hover:text-accent">
           support@swiftcart.com
         </a>
       </li>
@@ -222,7 +208,7 @@ const LinkColumn = ({ title, links }) => (
         <li key={link.path}>
           <Link
             to={link.path}
-            className="text-sm text-muted-foreground transition-colors hover:text-primary"
+            className="text-sm text-muted-foreground transition-colors hover:text-accent"
           >
             {link.name}
           </Link>
@@ -233,7 +219,7 @@ const LinkColumn = ({ title, links }) => (
 );
 
 const NewsletterBar = ({ email, setEmail, status, onSubmit }) => (
-  <div className="mt-12 flex flex-col items-start justify-between gap-5 rounded-lg border border-border bg-muted/40 p-6 sm:flex-row sm:items-center">
+  <div className="mt-12 flex flex-col items-start justify-between gap-5 rounded-lg border border-border bg-card p-6 shadow-sm sm:flex-row sm:items-center">
     <div>
       <h3 className="text-sm font-semibold text-foreground">Get 10% off your first order</h3>
       <p className="mt-1 text-sm text-muted-foreground">
@@ -242,7 +228,7 @@ const NewsletterBar = ({ email, setEmail, status, onSubmit }) => (
     </div>
 
     {status === 'submitted' ? (
-      <p className="text-sm font-medium text-primary">You're in — check your inbox to confirm.</p>
+      <p className="text-sm font-medium text-accent">You're in — check your inbox to confirm.</p>
     ) : (
       <form onSubmit={onSubmit} className="flex w-full max-w-sm gap-2">
         <Input
@@ -253,7 +239,7 @@ const NewsletterBar = ({ email, setEmail, status, onSubmit }) => (
           placeholder="you@example.com"
           className="h-10 bg-background"
         />
-        <Button type="submit" variant="default" className="h-10 shrink-0">
+        <Button type="submit" variant="primary" className="h-10 shrink-0">
           Subscribe
         </Button>
       </form>
@@ -282,7 +268,7 @@ const BackToTop = ({ onClick }) => (
   <button
     onClick={onClick}
     aria-label="Back to top"
-    className="absolute -top-5 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-sm transition-colors hover:text-primary"
+    className="absolute -top-5 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-sm transition-colors hover:text-accent"
   >
     <ArrowUp className="h-4 w-4" />
   </button>

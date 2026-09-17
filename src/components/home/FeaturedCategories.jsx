@@ -19,10 +19,10 @@ function FeaturedCategories() {
           <Link
             key={slug}
             to={`/shop?cat=${slug}`}
-            className="group flex flex-col items-center gap-2 rounded-lg border border-border p-4 text-center transition-colors hover:border-primary hover:bg-muted/50"
+            className="group flex flex-col items-center gap-2 rounded-lg border border-border p-3 text-center shadow-sm transition-shadow hover:shadow-md"
           >
-            <div className="rounded-full bg-primary/10 p-3 transition-colors group-hover:bg-primary/20">
-              <Icon className="h-5 w-5 text-primary" />
+            <div className="rounded-full bg-accent/10 p-3 transition-colors group-hover:bg-accent/20">
+              <Icon className="h-5 w-5 text-accent" />
             </div>
             <span className="text-xs font-medium text-foreground">{name}</span>
           </Link>

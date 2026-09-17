@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 
 export default function useFetch(url, options = {}) {
   const [data, setData] = useState(null);
-  const [isloading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const optionsRef = useRef(options);
@@ -32,17 +32,16 @@ export default function useFetch(url, options = {}) {
     } finally {
       setIsLoading(false);
     }
-  }, [url]); // ✅ بس url في الـ dependencies
+  }, [url]); 
 
   useEffect(() => {
     if (!url) return;
     const abortcontroller = new AbortController();
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchData(abortcontroller);
     return () => {
       abortcontroller.abort();
     };
   }, [fetchData, url]);
 
-  return { data, isloading, error };
+  return { data, isLoading, error };
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { ChevronDown, Heart, Search } from 'lucide-react';import { NAV_LINKS, PROMO_MESSAGES } from './data';
+import { ChevronDown, Heart, Search } from 'lucide-react';
+import { NAV_LINKS, PROMO_MESSAGES } from './data';
 import PromoBar from './PromoBar';
 import Logo from './Logo';
 import NavItem from './NavItem';
@@ -13,6 +14,10 @@ import LoginButton from './LoginButton';
 import MobileToggle from './MobileToggle';
 import MobileMenu from './MobileMenu';
 
+import { Link } from 'react-router-dom';
+import Badge from '../../ui/Badge';
+import { useWishlist } from '../../../context/WishlistContext';
+
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -21,6 +26,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPromoVisible, setIsPromoVisible] = useState(true);
   const [promoIndex, setPromoIndex] = useState(0);
+  const { totalWishlistItems } = useWishlist();
 
   const shopHoverTimeout = useRef(null);
 
@@ -68,9 +74,9 @@ export default function Navbar() {
       )}
 
       <header
-        className={`sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 transition-shadow duration-300 ${
-          isScrolled ? 'border-border shadow-sm' : 'border-border/40'
-        }`}
+        className={`sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur transition-shadow duration-200 ${
+    isScrolled ? 'shadow-sm' : ''
+  }`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div
@@ -112,7 +118,22 @@ export default function Navbar() {
                 className="lg:hidden"
                 onClick={() => setIsSearchOpen(true)}
               />
-              <IconButton icon={Heart} label="Wishlist" className="hidden sm:inline-flex" />
+
+              <Link
+                to="/wishlist"
+                className="relative hidden rounded-md p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
+              >
+                <Heart className="h-5 w-5" />
+                {totalWishlistItems > 0 && (
+                  <Badge
+                    variant="danger"
+                    className="absolute -top-0.5 -right-0.5 h-4 w-4 flex items-center justify-center p-0 text-[10px]"
+                  >
+                    {totalWishlistItems}
+                  </Badge>
+                )}
+              </Link>
+
               <ThemeToggle />
               <CartMenu isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
               <LoginButton />

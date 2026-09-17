@@ -5,10 +5,13 @@ import { useCart } from '../../../context/CartContext';
 import Badge from '../../ui/Badge';
 import Button from '../../ui/Button';
 import IconButton from './IconButton';
+import { useToast } from '../../../context/ToastContext';
 
 function CartMenu({ isOpen, setIsOpen }) {
   const { cartItems, totalItems, totalPrice, removeFromCart } = useCart();
   const ref = useRef(null);
+  const { info } = useToast();
+
 
   useEffect(() => {
     const onClickOutside = (e) => {
@@ -33,7 +36,7 @@ function CartMenu({ isOpen, setIsOpen }) {
 
       {isOpen && (
         <div className="absolute right-0 top-full z-50 mt-3 w-85 animate-in fade-in slide-in-from-top-1 duration-200">
-          <div className="overflow-hidden rounded-lg border border-border bg-card shadow-lg">
+          <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">   
             <div className="flex items-center justify-between border-b border-border px-4 py-3">
               <span className="text-sm font-semibold text-popover-foreground">
                 Your cart · {totalItems} {totalItems === 1 ? 'item' : 'items'}
@@ -62,7 +65,9 @@ function CartMenu({ isOpen, setIsOpen }) {
                       </p>
                     </div>
                     <button
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => {
+                        removeFromCart(item.id)
+                        info('Removed from cart', item.name);                      }}
                       aria-label={`Remove ${item.name}`}
                       className="rounded p-1.5 text-muted-foreground hover:bg-muted hover:text-destructive"
                     >
@@ -76,7 +81,7 @@ function CartMenu({ isOpen, setIsOpen }) {
             <div className="border-t border-border p-4">
               <div className="mb-3 flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Subtotal</span>
-                <span className="font-semibold text-popover-foreground">
+                <span className="font-semibold text-card-foreground">
                   ${totalPrice.toFixed(2)}
                 </span>
               </div>

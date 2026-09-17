@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import NotFound from './pages/NotFound'
 import Layout from './components/layout/Layout'
+import OrderConfirmation from './pages/OrderConfirmation'
 
 
 function App() {
@@ -18,10 +19,11 @@ function App() {
       <Route path="/" element={<Layout/>}>
         <Route index element={<Home />}/>
         <Route path="shop" element={<Shop />}/>
-        <Route path="productDetails/:id" element={<ProductDetails />}/>
+        <Route path="product/:id" element={<ProductDetails />}/>
         <Route path="cart" element={<Cart />}/>
         <Route path="wishlist" element={<WishList />}/>
         <Route path="checkout" element={<Checkout />}/>
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
       </Route>
         <Route path="login" element={<Login />}/>
         <Route path="register" element={<Register />}/>
