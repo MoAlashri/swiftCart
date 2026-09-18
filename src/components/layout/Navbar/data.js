@@ -2,13 +2,13 @@ import { Smartphone, Shirt, Home as HomeIcon, Watch, Sparkles, Dumbbell } from '
 
 export const NAV_LINKS = [{ name: 'Home', path: '/' }];
 
-export const SHOP_CATEGORIES = [
-  { name: 'Electronics', path: '/shop?cat=electronics', icon: Smartphone },
-  { name: 'Fashion', path: '/shop?cat=fashion', icon: Shirt },
-  { name: 'Home & Living', path: '/shop?cat=home', icon: HomeIcon },
-  { name: 'Watches', path: '/shop?cat=watches', icon: Watch },
+  export const SHOP_CATEGORIES = [
+  { name: 'Electronics', path: '/shop?cat=smartphones', icon: Smartphone },
+  { name: 'Fashion', path: '/shop?cat=mens-shirts', icon: Shirt },
+  { name: 'Home & Living', path: '/shop?cat=furniture', icon: HomeIcon },
+  { name: 'Watches', path: '/shop?cat=mens-watches', icon: Watch },
   { name: 'Beauty', path: '/shop?cat=beauty', icon: Sparkles },
-  { name: 'Sports', path: '/shop?cat=sports', icon: Dumbbell },
+  { name: 'Sports', path: '/shop?cat=sports-accessories', icon: Dumbbell },
 ];
 
 export const PROMO_MESSAGES = [

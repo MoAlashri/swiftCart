@@ -15,23 +15,31 @@ const DEFAULT_FILTERS = { category: null, minPrice: '', maxPrice: '', minRating:
 function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
+  const categoryParam = searchParams.get('cat') || null; // ✅ جديد
 
   const { products, isLoading, error } = useProducts(searchQuery);
   const { categories } = useCategories();
 
   const [filters, setFilters] = useState(() => ({
     ...DEFAULT_FILTERS,
-    category: searchParams.get('cat') || null,
+    category: categoryParam,
   }));
   const [sort, setSort] = useState('default');
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const [searchInput, setSearchInput] = useState(searchQuery);
 
+  // ✅ تزامن searchInput مع searchQuery أثناء الـ render
   const [prevSearchQuery, setPrevSearchQuery] = useState(searchQuery);
   if (searchQuery !== prevSearchQuery) {
     setPrevSearchQuery(searchQuery);
     setSearchInput(searchQuery);
+  }
+
+  const [prevCategoryParam, setPrevCategoryParam] = useState(categoryParam);
+  if (categoryParam !== prevCategoryParam) {
+    setPrevCategoryParam(categoryParam);
+    setFilters((prev) => ({ ...prev, category: categoryParam }));
   }
 
   const filterKey = JSON.stringify({ filters, sort, searchQuery });
