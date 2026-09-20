@@ -75,7 +75,7 @@ export const STATIC_PAGES = {
   },
   privacy: {
     title: 'Privacy policy',
-    intro: 'This is a demo project. No real personal data is collected, stored, or shared with third parties.',
+    intro: 'Hello There This is a demo project. No real personal data is collected, stored, or shared with third parties.',
     sections: [],
   },
   terms: {
