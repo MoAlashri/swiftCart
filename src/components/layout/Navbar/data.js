@@ -1,6 +1,10 @@
+// import { path } from 'framer-motion/client';
 import { Smartphone, Shirt, Home as HomeIcon, Watch, Sparkles, Dumbbell } from 'lucide-react';
 
-export const NAV_LINKS = [{ name: 'Home', path: '/' }];
+export const NAV_LINKS = [
+  { name: 'Home', path: '/' },
+  {name: "Shop", path: "shop"}
+];
 
   export const SHOP_CATEGORIES = [
   { name: 'Electronics', path: '/shop?cat=smartphones', icon: Smartphone },

@@ -186,8 +186,8 @@ const BrandColumn = () => (
       </li>
       <li className="flex items-center gap-2.5 text-sm text-muted-foreground">
         <Phone className="h-4 w-4 shrink-0 text-muted-foreground" />
-        <a href="tel:+20100000000" className="transition-colors hover:text-accent">
-          +20 10 000 0000
+        <a href="tel:+201024149146" className="transition-colors hover:text-accent">
+          +201024149146
         </a>
       </li>
       <li className="flex items-center gap-2.5 text-sm text-muted-foreground">

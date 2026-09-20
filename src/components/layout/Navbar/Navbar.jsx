@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { ChevronDown, Heart, Search } from 'lucide-react';
+import { useState, useEffect} from 'react';
+import { Heart, Search } from 'lucide-react';
 import { NAV_LINKS, PROMO_MESSAGES } from './data';
 import PromoBar from './PromoBar';
 import Logo from './Logo';
 import NavItem from './NavItem';
-import ShopMegaMenu from './ShopMegaMenu';
+// import ShopMegaMenu from './ShopMegaMenu';
 import DesktopSearch from './DesktopSearch';
 import SearchOverlay from './SearchOverlay';
 import IconButton from './IconButton';
@@ -22,13 +22,13 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isShopOpen, setIsShopOpen] = useState(false);
+  // const [isShopOpen, setIsShopOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPromoVisible, setIsPromoVisible] = useState(true);
   const [promoIndex, setPromoIndex] = useState(0);
   const { totalWishlistItems } = useWishlist();
 
-  const shopHoverTimeout = useRef(null);
+  // const shopHoverTimeout = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 8);
@@ -50,7 +50,7 @@ export default function Navbar() {
       setIsMobileMenuOpen(false);
       setIsSearchOpen(false);
       setIsCartOpen(false);
-      setIsShopOpen(false);
+      // setIsShopOpen(false);
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
@@ -58,14 +58,14 @@ export default function Navbar() {
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
-  const handleShopEnter = useCallback(() => {
-    clearTimeout(shopHoverTimeout.current);
-    setIsShopOpen(true);
-  }, []);
+  // const handleShopEnter = useCallback(() => {
+  //   clearTimeout(shopHoverTimeout.current);
+  //   setIsShopOpen(true);
+  // }, []);
 
-  const handleShopLeave = useCallback(() => {
-    shopHoverTimeout.current = setTimeout(() => setIsShopOpen(false), 150);
-  }, []);
+  // const handleShopLeave = useCallback(() => {
+  //   shopHoverTimeout.current = setTimeout(() => setIsShopOpen(false), 150);
+  // }, []);
 
   return (
     <>
@@ -95,11 +95,10 @@ export default function Navbar() {
                   {link.name}
                 </NavItem>
               ))}
-              <div className="relative" onMouseEnter={handleShopEnter} onMouseLeave={handleShopLeave}>
+              {/* <div className="relative" onMouseEnter={handleShopEnter} onMouseLeave={handleShopLeave}>
                 <button
                   className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                  onClick={() => setIsShopOpen((v) => !v)}
-                  aria-expanded={isShopOpen}
+                
                 >
                   Shop
                   <ChevronDown
@@ -107,7 +106,7 @@ export default function Navbar() {
                   />
                 </button>
                 {isShopOpen && <ShopMegaMenu onNavigate={() => setIsShopOpen(false)} />}
-              </div>
+              </div> */}
             </nav>
 
             <div className="flex items-center justify-end gap-1 sm:gap-2 flex-1 md:flex-none">
