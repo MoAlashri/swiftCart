@@ -10,7 +10,7 @@ function CategoryNav() {
   return (
     <div className="border-b border-border bg-card">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center gap-1 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden justify-around">
+        <nav className="flex items-center gap-1 overflow-x-auto py-2 scrollbar-width:none [&::-webkit-scrollbar]:hidden justify-around">
           {items.map(({ name, path, icon: Icon }) => {
             const isActive = currentPath === path;
 
